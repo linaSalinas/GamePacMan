@@ -2,10 +2,10 @@ package model;
 
 public class PacMan {
 	
-	public final static String LEFT = "izquierda";
-	public final static String RIGTH = "derecha";
-	public final static String UP = "arriba";
-	public final static String DOWN = "abajo";
+	public final static String LEFT = "left";
+	public final static String RIGHT = "right";
+	public final static String UP = "up";
+	public final static String DOWN = "down";
 	
 	public final static int ANGLE = 45;
 	public final static int LENGTH = 270;
@@ -38,34 +38,37 @@ public class PacMan {
 		this.windowH = windowH;
 	}
 
-
-
 	public void movePacMan() {
 		
 		if(x >= windowW) {
-			direction = "izquierda";
+			rebounce++;
+			direction = "left";
 		}
 		if(x <= 0) {
-			direction = "derecha";
+			rebounce++;
+			direction = "right";
 		}
 		if(y <= 0) {
-			direction = "abajo";
+			rebounce++;
+			direction = "down";
 		}
 		if(y>= windowH) {
-			direction ="arriba";
+			rebounce++;
+			direction ="up";
 		}
-		if(direction.equals("izquierda")) {
+
+		if(direction.equals("left")) {
 			x= (int) (x - INCREASE);
 		}
-		else if (direction.equals("derecha")){
+		else if (direction.equals("right")){
 			x = (int) (x + INCREASE);
 		}
-		else if(direction.equals("arriba")) {
+		else if(direction.equals("up")) {
 			y = (int) (y - INCREASE);
 		}else {
 			y = (int) (y + INCREASE);
 		}
-	}
+	}//*
 
 	public int getX() {
 		return x;
@@ -103,11 +106,12 @@ public class PacMan {
 		return windowW;
 	}
 
-
 	public double getWindowH() {
 		return windowH;
 	}
-
-
-
+	
+	public void countRebounds() {
+			
+	}
+	
 }

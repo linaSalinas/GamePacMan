@@ -6,23 +6,25 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 public class Main extends Application {
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
-		
+
 		Parent root = FXMLLoader.load(getClass().getResource("PacMan.fxml"));
-		
+
 		Scene scene = new Scene(root);
-		stage.setTitle("PacMan");
+		stage.setTitle("CATCH THE PAC_MAN");
 		stage.setScene(scene);;
 		stage.show();
 	}
-	
+
 	public static void main (String[] args) {
-		
+
 		launch(args);
-		
-		
+
+
+
 	}
 }

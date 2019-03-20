@@ -1,11 +1,12 @@
 package threads;
 
+import model.Game;
 import model.PacMan;
 import userInterface.pacManController;
 
 public class pacManThread extends Thread{
 	
-	private PacMan pacMan;
+	private Game game;
 	private boolean moving;
 	private pacManController pacManC;
 	
@@ -17,8 +18,9 @@ public class pacManThread extends Thread{
 	
 	public void run() {
 		while(moving) {
-			pacMan.movePacMan();
-			pacManC.getPacman().setCenterX(pacMan.getX());
+
+			game.getPacMans().movePacMan();
+			pacManC.getGame().setCenterX(pacMan.getX());
 			pacManC.getPacman().setCenterY(pacMan.getY());
 			try {
 				sleep(50);
