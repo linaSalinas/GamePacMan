@@ -28,7 +28,7 @@ public class pacManController {
     }
     
     @FXML
-    void loadLevel0(ActionEvent event) throws IOException {
+    void loadLevel0(ActionEvent event) throws IOException, ClassNotFoundException {
     	try {
 	    	game = new Game (0, pane.getPrefWidth(), pane.getPrefHeight());
 	    	game.loadGameFile("docs/level0.txt", "\t"); 
@@ -37,14 +37,15 @@ public class pacManController {
     	catch(IOException ioe) {
     		
     	}
-    	PacManThread pacManT = new PacManThread(pacman, this);
+    	
+    	PacManThread pacManT = new PacManThread(this, pacman);
     	pacManT.setDaemon(true);
     	pacManT.start();
 
     }
 
     @FXML
-    void loadLevel1(ActionEvent event) {
+    void loadLevel1(ActionEvent event) throws ClassNotFoundException {
     	try {
 	    	game = new Game (0, pane.getPrefWidth(), pane.getPrefHeight());
 	    	game.loadGameFile("docs/level1.txt", "\t"); 
@@ -53,14 +54,14 @@ public class pacManController {
     	catch(IOException ioe) {
     		
     	}
-    	PacManThread pacManT = new PacManThread(pacman, this);
+    	PacManThread pacManT = new PacManThread(this, pacman);
     	pacManT.setDaemon(true);
     	pacManT.start();
 
     }
 
     @FXML
-    void loadLevel2(ActionEvent event) {
+    void loadLevel2(ActionEvent event) throws ClassNotFoundException {
     	try {
 	    	game = new Game (0, pane.getPrefWidth(), pane.getPrefHeight());
 	    	game.loadGameFile("docs/level0.txt", "\t"); 
@@ -69,7 +70,7 @@ public class pacManController {
     	catch(IOException ioe) {
     		
     	}
-    	PacManThread pacManT = new PacManThread(pacMans,pacman, this);
+    	PacManThread pacManT = new PacManThread(this, pacman);
     	pacManT.setDaemon(true);
     	pacManT.start();
 

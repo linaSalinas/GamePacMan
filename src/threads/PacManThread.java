@@ -1,23 +1,21 @@
 package threads;
 
-import model.Game;
 import model.PacMan;
 import userInterface.pacManController;
 
 public class PacManThread extends Thread{
-	
+
 	private PacMan pacMan;
 	private boolean moving;
-	private Game game;
 	private pacManController pacManC;
-	
-	public PacManThread (Game game, pacManController pacManC, PacMan pacMan) {
-		this.game = game;
+
+	public PacManThread (pacManController pacManC, PacMan pacMan) {
+
 		moving = true;
 		this.pacManC = pacManC;
 		this.pacMan = pacMan;
 	}
-	
+
 	public void run() {
 		while(moving) {
 
@@ -31,10 +29,6 @@ public class PacManThread extends Thread{
 		}
 	}
 
-	public Game getGame() {
-		return game;
-	}
-
 	public boolean isMoving() {
 		return moving;
 	}
@@ -42,5 +36,10 @@ public class PacManThread extends Thread{
 	public void setMoving(boolean moving) {
 		this.moving = moving;
 	}
-	
+	public pacManController getPacManC() {
+		return pacManC;
+	}
+
 }
+
+
