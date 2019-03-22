@@ -9,8 +9,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
 import model.PacMan;
+import threads.PacManThread;
 import model.Game;
-import threads.pacManThread;
 
 public class pacManController {
 
@@ -37,7 +37,7 @@ public class pacManController {
     	catch(IOException ioe) {
     		
     	}
-    	pacManThread pacManT = new pacManThread(pacman, this);
+    	PacManThread pacManT = new PacManThread(pacman, this);
     	pacManT.setDaemon(true);
     	pacManT.start();
 
@@ -45,11 +45,33 @@ public class pacManController {
 
     @FXML
     void loadLevel1(ActionEvent event) {
+    	try {
+	    	game = new Game (0, pane.getPrefWidth(), pane.getPrefHeight());
+	    	game.loadGameFile("docs/level1.txt", "\t"); 
+	    	loadPacMans();
+    	}
+    	catch(IOException ioe) {
+    		
+    	}
+    	PacManThread pacManT = new PacManThread(pacman, this);
+    	pacManT.setDaemon(true);
+    	pacManT.start();
 
     }
 
     @FXML
     void loadLevel2(ActionEvent event) {
+    	try {
+	    	game = new Game (0, pane.getPrefWidth(), pane.getPrefHeight());
+	    	game.loadGameFile("docs/level0.txt", "\t"); 
+	    	loadPacMans();
+    	}
+    	catch(IOException ioe) {
+    		
+    	}
+    	PacManThread pacManT = new PacManThread(pacMans,pacman, this);
+    	pacManT.setDaemon(true);
+    	pacManT.start();
 
     }
     

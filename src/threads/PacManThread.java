@@ -4,24 +4,25 @@ import model.Game;
 import model.PacMan;
 import userInterface.pacManController;
 
-public class pacManThread extends Thread{
+public class PacManThread extends Thread{
 	
-	private Game game;
+	private PacMan pacMan;
 	private boolean moving;
+	private Game game;
 	private pacManController pacManC;
 	
-	public pacManThread (PacMan pacMan, pacManController pacManC) {
-		this.pacMan = pacMan;
+	public PacManThread (Game game, pacManController pacManC, PacMan pacMan) {
+		this.game = game;
 		moving = true;
 		this.pacManC = pacManC;
+		this.pacMan = pacMan;
 	}
 	
 	public void run() {
 		while(moving) {
 
-			game.getPacMans().movePacMan();
-			pacManC.getGame().setCenterX(pacMan.getX());
-			pacManC.getPacman().setCenterY(pacMan.getY());
+			pacMan.movePacMan();
+
 			try {
 				sleep(50);
 			}catch(InterruptedException p) {
@@ -30,8 +31,8 @@ public class pacManThread extends Thread{
 		}
 	}
 
-	public PacMan getPacMan() {
-		return pacMan;
+	public Game getGame() {
+		return game;
 	}
 
 	public boolean isMoving() {
